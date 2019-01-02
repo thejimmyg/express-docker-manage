@@ -38,6 +38,7 @@ const mustacheDirs = process.env.MUSTACHE_DIRS ? process.env.MUSTACHE_DIRS.split
 const publicFilesDirs = process.env.PUBLIC_FILES_DIRS ? process.env.PUBLIC_FILES_DIRS.split(':') : []
 const publicURLPath = process.env.PUBLIC_URL_PATH || scriptName + '/public'
 const listTitle = process.env.LIST_TITLE || 'Docker Images'
+const imageBaseName = process.env.IMAGE_BASE_NAME || ''
 
 const main = async () => {
   const app = express()
@@ -95,7 +96,7 @@ const main = async () => {
           files.push({ name: dirname })
         }
       }
-      res.render('list', { title: listTitle, files })
+      res.render('list', { imageBaseName, title: listTitle, files })
     } catch (e) {
       debug(e)
       next(e)
@@ -111,8 +112,13 @@ const main = async () => {
 
 main()
 
-// Better handling of SIGNIN for docker
+// Better handling of SIGINT and SIGTERM for docker
 process.on('SIGINT', function () {
-  console.log('Exiting ...')
+  console.log('Received SIGINT. Exiting ...')
+  process.exit()
+})
+
+process.on('SIGTERM', function () {
+  console.log('Received SIGTERM. Exiting ...')
   process.exit()
 })

@@ -15,6 +15,7 @@ You configure the container by setting environment variables:
 * `DEBUG` - The loggers you want to see log output for. e.g. `express-docker-manage,express-mustache-jwt-signin`.
 * `PORT` - The port you would like the app to run on. Defaults to 80.
 * `SECRET` - The secret string used to sign cookies. Make sure this is a long secret that no-one else knows, otherwise they could forge the user information in your cookies. Make sure you set the `SECRET` variable to the same value in the `signin` container too, otherwise they won't recognose each other's cookies.
+* `IMAGE_BASE_NAME` - the base name for the location of docker images. It is displayed on the `list` view. e.g. `www.example.localhost/`
 
 ## Docker Example
 
@@ -149,6 +150,11 @@ npm run fix
 
 
 ## Changelog
+
+### 0.1.1 2018-01-02
+
+* Respond to SIGTERM for Docker
+* Added `IMAGE_BASE_NAME`
 
 ### 0.1.0 2018-12-30
 

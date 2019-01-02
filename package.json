@@ -1,10 +1,10 @@
 {
   "name": "express-docker-manage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "View published docker registry images",
   "scripts": {
-    "docker:build": "docker build . -t thejimmyg/express-docker-manage:0.1.0",
-    "docker:push": "docker push thejimmyg/express-docker-manage:0.1.0",
+    "docker:build": "docker build . -t thejimmyg/express-docker-manage:0.1.1",
+    "docker:push": "docker push thejimmyg/express-docker-manage:0.1.1",
     "docker:build:test": "docker build . -t thejimmyg/express-docker-manage:test",
     "docker:push:test": "docker push thejimmyg/express-docker-manage:test",
     "docker:run:local": "docker-compose stop && docker-compose pull && docker-compose up --build -d",
